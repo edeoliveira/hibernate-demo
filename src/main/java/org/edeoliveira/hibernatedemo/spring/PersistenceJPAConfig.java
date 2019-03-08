@@ -1,6 +1,8 @@
 package org.edeoliveira.hibernatedemo.spring;
 
 import com.google.common.base.Preconditions;
+import org.edeoliveira.hibernatedemo.persistence.hibernate.MetadataExtractorIntegrator;
+import org.hibernate.jpa.boot.spi.IntegratorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Collections;
 import java.util.Properties;
 
 @Configuration
@@ -76,6 +79,8 @@ public class PersistenceJPAConfig {
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
+        hibernateProperties.put("hibernate.integrator_provider",
+                (IntegratorProvider) () -> Collections.singletonList(MetadataExtractorIntegrator.INSTANCE));
 
         return hibernateProperties;
     }
