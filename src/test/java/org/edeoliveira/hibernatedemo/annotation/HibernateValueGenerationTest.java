@@ -37,7 +37,8 @@ public class HibernateValueGenerationTest {
     public void init() throws SQLException {
         Connection connection = dataSource.getConnection();
         Statement stat = connection.createStatement();
-        stat.execute("CREATE SEQUENCE IF NOT EXISTS SEQ_VERSION_GENERATOR");
+        stat.execute("CREATE SEQUENCE IF NOT EXISTS SEQ_VERSION");
+        stat.execute("CREATE SEQUENCE IF NOT EXISTS SEQ_MINOR_VERSION");
         connection.close();
     }
 
@@ -52,6 +53,7 @@ public class HibernateValueGenerationTest {
         List<Book> books = bookRepository.findAll();
         assertEquals("size incorrect", 1, books.size());
         assertNotNull("version is not set", books.get(0).getVersion());
+        assertNull("minor version is set", books.get(0).getMinorVersion());
     }
 
     @Test
@@ -66,5 +68,6 @@ public class HibernateValueGenerationTest {
 
         Optional<Book> optionalBook = bookRepository.findByVersion(version);
         assertTrue(optionalBook.isPresent());
+        assertNull("minor version is set", optionalBook.get().getMinorVersion());
     }
 }

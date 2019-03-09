@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.*;
@@ -27,12 +28,16 @@ public class Book implements IVersionable {
 
     @GenerateVersion(
             parameters = {
-                    @Parameter(name = SEQUENCE_PARAM, value = "SEQ_VERSION_GENERATOR"),
+                    @Parameter(name = SEQUENCE_PARAM, value = "SEQ_VERSION"),
                     @Parameter(name = INITIAL_PARAM, value = "1"),
                     @Parameter(name = INCREMENT_PARAM, value = "50")
             })
     @Column
     private Long version;
+
+    @SequenceGenerator(name = "minorGenerator", sequenceName = "SEQ_MINOR_VERSION", allocationSize = 1)
+    @GeneratedValue(generator = "minorGenerator")
+    private Long minorVersion;
 
     public Long getId() {
         return Id;
@@ -64,5 +69,13 @@ public class Book implements IVersionable {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public Long getMinorVersion() {
+        return minorVersion;
+    }
+
+    public void setMinorVersion(Long minorVersion) {
+        this.minorVersion = minorVersion;
     }
 }
