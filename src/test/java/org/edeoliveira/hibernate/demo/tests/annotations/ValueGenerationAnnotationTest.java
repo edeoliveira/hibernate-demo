@@ -1,9 +1,9 @@
-package org.edeoliveira.hibernatedemo.annotation;
+package org.edeoliveira.hibernate.demo.tests.annotations;
 
-import org.edeoliveira.hibernatedemo.persistence.model.Book;
-import org.edeoliveira.hibernatedemo.persistence.model.BookBuilder;
-import org.edeoliveira.hibernatedemo.persistence.repository.BookRepository;
-import org.edeoliveira.hibernatedemo.spring.PersistenceJPAConfig;
+import org.edeoliveira.hibernate.demo.model.Book;
+import org.edeoliveira.hibernate.demo.model.BookBuilder;
+import org.edeoliveira.hibernate.demo.repository.BookRepository;
+import org.edeoliveira.hibernate.demo.PersistenceJPAConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceJPAConfig.class}, loader = AnnotationConfigContextLoader.class)
 @Transactional
-public class HibernateValueGenerationTest {
+public class ValueGenerationAnnotationTest {
     @Resource
     private BookRepository bookRepository;
 

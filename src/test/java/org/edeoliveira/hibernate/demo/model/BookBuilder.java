@@ -1,4 +1,4 @@
-package org.edeoliveira.hibernatedemo.persistence.model;
+package org.edeoliveira.hibernate.demo.model;
 
 import java.time.LocalDateTime;
 

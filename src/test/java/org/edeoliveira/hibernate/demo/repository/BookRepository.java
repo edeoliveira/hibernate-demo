@@ -1,6 +1,6 @@
-package org.edeoliveira.hibernatedemo.persistence.repository;
+package org.edeoliveira.hibernate.demo.repository;
 
-import org.edeoliveira.hibernatedemo.persistence.model.Book;
+import org.edeoliveira.hibernate.demo.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

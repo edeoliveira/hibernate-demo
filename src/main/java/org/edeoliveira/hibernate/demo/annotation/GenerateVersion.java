@@ -1,4 +1,4 @@
-package org.edeoliveira.hibernatedemo.persistence.hibernate.annotation;
+package org.edeoliveira.hibernate.demo.annotation;
 
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.ValueGenerationType;

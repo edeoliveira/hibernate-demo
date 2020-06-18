@@ -1,7 +1,6 @@
-package org.edeoliveira.hibernatedemo.spring;
+package org.edeoliveira.hibernate.demo;
 
 import com.google.common.base.Preconditions;
-import org.edeoliveira.hibernatedemo.persistence.hibernate.MetadataExtractorIntegrator;
 import org.hibernate.jpa.boot.spi.IntegratorProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +25,8 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "org.edeoliveira.hibernatedemo" })
-@EnableJpaRepositories(basePackages = "org.edeoliveira.hibernatedemo.persistence.repository")
+@ComponentScan({ "org.edeoliveira.hibernate.demo" })
+@EnableJpaRepositories(basePackages = "org.edeoliveira.hibernate.demo.repository")
 public class PersistenceJPAConfig {
 
     @Autowired
@@ -41,7 +40,7 @@ public class PersistenceJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.edeoliveira.hibernatedemo.persistence.model" });
+        em.setPackagesToScan(new String[] { "org.edeoliveira.hibernate.demo.model" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

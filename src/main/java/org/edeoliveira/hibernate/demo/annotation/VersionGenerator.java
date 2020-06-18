@@ -1,6 +1,6 @@
-package org.edeoliveira.hibernatedemo.persistence.hibernate.annotation;
+package org.edeoliveira.hibernate.demo.annotation;
 
-import org.edeoliveira.hibernatedemo.persistence.hibernate.MetadataExtractorIntegrator;
+import org.edeoliveira.hibernate.demo.MetadataExtractorIntegrator;
 import org.hibernate.Session;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.enhanced.SequenceStyleGenerator;
@@ -33,10 +33,10 @@ public class VersionGenerator implements ValueGenerator<Long> {
     }
 
     public Long generateValue(Session session, Object owner) {
-        if (IVersionable.class.isAssignableFrom(owner.getClass())) {
-            IVersionable versionable = (IVersionable) owner;
-            if (versionable.getVersion() != null) {
-                return versionable.getVersion();
+        if (IVersionnable.class.isAssignableFrom(owner.getClass())) {
+            IVersionnable versionnable = (IVersionnable) owner;
+            if (versionnable.getVersion() != null) {
+                return versionnable.getVersion();
             } else {
                 return (Long) getGenerator().generate((SharedSessionContractImplementor) session, owner);
             }

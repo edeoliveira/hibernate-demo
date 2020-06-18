@@ -1,4 +1,4 @@
-package org.edeoliveira.hibernatedemo.persistence.hibernate;
+package org.edeoliveira.hibernate.demo;
 
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.model.relational.Database;

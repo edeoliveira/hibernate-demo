@@ -1,7 +1,7 @@
-package org.edeoliveira.hibernatedemo.persistence.model;
+package org.edeoliveira.hibernate.demo.model;
 
-import org.edeoliveira.hibernatedemo.persistence.hibernate.annotation.GenerateVersion;
-import org.edeoliveira.hibernatedemo.persistence.hibernate.annotation.IVersionable;
+import org.edeoliveira.hibernate.demo.annotation.GenerateVersion;
+import org.edeoliveira.hibernate.demo.annotation.IVersionnable;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.Column;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.*;
 
 @Entity
-public class Book implements IVersionable {
+public class Book implements IVersionnable {
 
     @Id
     @GeneratedValue
