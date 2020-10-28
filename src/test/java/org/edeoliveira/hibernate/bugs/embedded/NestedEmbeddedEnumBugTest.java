@@ -20,6 +20,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Bug tracked on Hibernate JIRA as HHH-14294
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {NestedEmbeddedEnumBugJPAConfig.class}, loader = AnnotationConfigContextLoader.class)
 @Transactional
